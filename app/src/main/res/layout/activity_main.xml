@@ -25,4 +25,11 @@
         android:layout_height="wrap_content"
         android:text="socket"/>
 
+
+    <Button
+        android:id="@+id/id_threadpool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="线程池"/>
+
 </LinearLayout>

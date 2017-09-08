@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.li.leeutil.threadpool.ThreadPoolActivity">
+
+
+    <Button
+        android:id="@+id/id_SingleThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SingleThreadPool"/>
+    <Button
+        android:id="@+id/id_FixThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FixThreadPool"/>
+    <Button
+        android:id="@+id/id_CachedThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CachedThreadPool"/>
+    <Button
+        android:id="@+id/id_ScheduledThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ScheduledThreadPool"/>
+
+    <Button
+    android:id="@+id/id_newSingleThreadScheduledExecutor"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="newSingleThreadScheduledExecutor"/>
+</LinearLayout>

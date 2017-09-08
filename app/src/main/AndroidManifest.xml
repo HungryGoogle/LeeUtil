@@ -22,7 +22,8 @@
         <activity android:name=".http.HttpURLConnectionFetchPictureActivity" />
         <activity android:name=".http.HttpClientActivity" />
         <activity android:name=".http.NetworkActivity" />
-        <activity android:name=".socket.SocketClientActivity"></activity>
+        <activity android:name=".socket.SocketClientActivity" />
+        <activity android:name=".threadpool.ThreadPoolActivity"></activity>
     </application>
 
 </manifest>
