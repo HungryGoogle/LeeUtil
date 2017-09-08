@@ -12,13 +12,17 @@
     android:id="@+id/id_parse_xml"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:inputType="textPersonName"
     android:text="解析XML"/>
     <Button
         android:id="@+id/id_http"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:text="Http使用"/>
+
+    <Button
+        android:id="@+id/id_socket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="socket"/>
 
 </LinearLayout>

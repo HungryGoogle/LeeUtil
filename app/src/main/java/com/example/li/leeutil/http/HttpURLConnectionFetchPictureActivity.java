@@ -1,4 +1,4 @@
-package com.example.li.leeutil.Http;
+package com.example.li.leeutil.http;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -19,9 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".parsexml.ParseXmlActivity" />
-        <activity android:name=".Http.HttpURLConnectionFetchPictureActivity" />
-        <activity android:name=".Http.HttpClientActivity" />
-        <activity android:name=".Http.NetworkActivity"></activity>
+        <activity android:name=".http.HttpURLConnectionFetchPictureActivity" />
+        <activity android:name=".http.HttpClientActivity" />
+        <activity android:name=".http.NetworkActivity" />
+        <activity android:name=".socket.SocketClientActivity"></activity>
     </application>
 
 </manifest>

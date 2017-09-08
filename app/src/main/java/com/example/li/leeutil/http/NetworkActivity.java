@@ -1,4 +1,4 @@
-package com.example.li.leeutil.Http;
+package com.example.li.leeutil.http;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -11,7 +11,6 @@ import com.example.li.leeutil.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

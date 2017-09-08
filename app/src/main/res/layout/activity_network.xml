@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.li.leeutil.Http.NetworkActivity">
+    tools:context="com.example.li.leeutil.http.NetworkActivity">
 
     <TextView
         android:id="@+id/tvUrl"
