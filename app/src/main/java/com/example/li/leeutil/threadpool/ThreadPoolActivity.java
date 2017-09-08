@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.li.leeutil.R;
+import com.example.li.leeutil.threadpool.CallBackFuture.CallableDemo;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +31,7 @@ public class ThreadPoolActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             String threadName = Thread.currentThread().getName();
-                            Log.i("leeTest------>", "线程："+threadName+",正在执行第" + index + "个任务");
+                            Log.i("leeTest------>", "线程：" + threadName + ",正在执行第" + index + "个任务");
                             try {
                                 Thread.sleep(1000);
                             } catch (InterruptedException e) {
@@ -51,7 +53,7 @@ public class ThreadPoolActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             String threadName = Thread.currentThread().getName();
-                            Log.i("leeTest------>", "线程："+threadName+",正在执行第" + index + "个任务");
+                            Log.i("leeTest------>", "线程：" + threadName + ",正在执行第" + index + "个任务");
                             try {
                                 Thread.sleep(1000);
                             } catch (InterruptedException e) {
@@ -67,7 +69,7 @@ public class ThreadPoolActivity extends AppCompatActivity {
         findViewById(R.id.id_CachedThreadPool).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExecutorService fixedThreadPool = Executors. newCachedThreadPool ();
+                ExecutorService fixedThreadPool = Executors.newCachedThreadPool();
                 for (int i = 1; i <= 100; i++) {
                     final int index = i;
                     fixedThreadPool.execute(new Runnable() {
@@ -90,7 +92,7 @@ public class ThreadPoolActivity extends AppCompatActivity {
         findViewById(R.id.id_ScheduledThreadPool).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScheduledExecutorService fixedThreadPool = Executors. newScheduledThreadPool (5);
+                ScheduledExecutorService fixedThreadPool = Executors.newScheduledThreadPool(5);
                 for (int i = 1; i <= 10; i++) {
                     final int index = i;
                     fixedThreadPool.scheduleAtFixedRate(new Runnable() {
@@ -113,7 +115,7 @@ public class ThreadPoolActivity extends AppCompatActivity {
         findViewById(R.id.id_newSingleThreadScheduledExecutor).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ScheduledExecutorService fixedThreadPool = Executors. newSingleThreadScheduledExecutor ();
+                final ScheduledExecutorService fixedThreadPool = Executors.newSingleThreadScheduledExecutor();
                 for (int i = 1; i <= 10; i++) {
                     final int index = i;
                     fixedThreadPool.scheduleAtFixedRate(new Runnable() {
@@ -130,6 +132,40 @@ public class ThreadPoolActivity extends AppCompatActivity {
                         }
                     }, 0, 20 * 1000, TimeUnit.MILLISECONDS);
                 }
+            }
+        });
+
+
+        //
+        findViewById(R.id.id_Callable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //创建线程池
+                ExecutorService es = Executors.newSingleThreadExecutor();
+                //创建Callable对象任务
+                CallableDemo calTask = new CallableDemo();
+                //提交任务并获取执行结果
+                Future<Integer> future = es.submit(calTask);
+                //关闭线程池
+                es.shutdown();
+                try {
+//                    Thread.sleep(2000);
+                    Log.i("leeTest------>", "主线程在执行其他任务");
+
+                    // ** 注意 **，这里会阻塞主线程
+                    if (future.get() != null) {
+                        //输出获取到的结果
+                        Log.i("leeTest------>", "future.get()-->" + future.get());
+                    } else {
+                        //输出获取到的结果
+                        Log.i("leeTest------>", "future.get()未获取到结果");
+                    }
+
+                } catch (Exception e) {
+                    Log.i("leeTest------>", "future.get() Exception");
+                    e.printStackTrace();
+                }
+                Log.i("leeTest------>", "主线程在执行完成");
             }
         });
     }
