@@ -5,20 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.li.leeutil.MainActivity"
-    android:background="@drawable/bg">
+    tools:context="com.example.li.leeutil.Http.HttpURLConnectionFetchPictureActivity">
 
-    <Button
-    android:id="@+id/id_parse_xml"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:inputType="textPersonName"
-    android:text="解析XML"/>
-    <Button
-        android:id="@+id/id_http"
+
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Http使用"/>
-
+        app:srcCompat="@drawable/bg"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="16dp" />
 </LinearLayout>

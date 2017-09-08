@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.li.leeutil.Http.HttpClientActivity;
+import com.example.li.leeutil.Http.HttpURLConnectionFetchPictureActivity;
 import com.example.li.leeutil.parsexml.ParseXmlActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // 解析xml
         findViewById(R.id.id_parse_xml).setOnClickListener(MainActivity.this);
+        findViewById(R.id.id_http).setOnClickListener(MainActivity.this);
     }
 
 
@@ -24,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.id_parse_xml:{
                 startActivity(new Intent(MainActivity.this, ParseXmlActivity.class));
+                break;
+            }case R.id.id_http:{
+//                startActivity(new Intent(MainActivity.this, NetworkActivity.class));
+                startActivity(new Intent(MainActivity.this, HttpClientActivity.class));
                 break;
             }
         }
