@@ -23,7 +23,8 @@
         <activity android:name=".http.HttpClientActivity" />
         <activity android:name=".http.NetworkActivity" />
         <activity android:name=".socket.SocketClientActivity" />
-        <activity android:name=".threadpool.ThreadPoolActivity"></activity>
+        <activity android:name=".threadpool.ThreadPoolActivity" />
+        <activity android:name=".jni.FirstJniActivity"></activity>
     </application>
 
 </manifest>

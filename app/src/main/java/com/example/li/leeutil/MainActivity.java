@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.li.leeutil.http.HttpClientActivity;
+import com.example.li.leeutil.jni.FirstJniActivity;
 import com.example.li.leeutil.parsexml.ParseXmlActivity;
 import com.example.li.leeutil.socket.SocketClientActivity;
 import com.example.li.leeutil.threadpool.ThreadPoolActivity;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.id_http).setOnClickListener(MainActivity.this);
         findViewById(R.id.id_socket).setOnClickListener(MainActivity.this);
         findViewById(R.id.id_threadpool).setOnClickListener(MainActivity.this);
+        findViewById(R.id.id_JNI).setOnClickListener(MainActivity.this);
     }
 
 
@@ -43,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case R.id.id_threadpool:{
                 startActivity(new Intent(MainActivity.this, ThreadPoolActivity.class));
+                break;
+            }
+            case R.id.id_JNI:{
+                startActivity(new Intent(MainActivity.this, FirstJniActivity.class));
                 break;
             }
         }
