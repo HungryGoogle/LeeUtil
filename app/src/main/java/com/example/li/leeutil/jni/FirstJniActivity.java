@@ -51,6 +51,9 @@ public class FirstJniActivity extends Activity {
 
                 // Jni C调用Android的方法，打印的日志在logcat里面
                 cCallJavaFunc();
+
+                // Jni C调用Android的static方法，打印的日志在logcat里面
+                cCallJavaStaticFunc();
             }
         });
     }
@@ -66,6 +69,13 @@ public class FirstJniActivity extends Activity {
     }
 
     /**
+     *  这个函数，在{@link FirstJniActivity#cCallJavaStaticFunc}会被反射调用
+     */
+    public static void staticShow(String message) {
+        Log.i("leeTest------>", "staticShow runed");
+    }
+
+    /**
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
@@ -76,6 +86,7 @@ public class FirstJniActivity extends Activity {
     public native void cLog();
     private native void encodeArray(int[] arr);
     public native void cCallJavaFunc();
+    public native void cCallJavaStaticFunc();
 
 
     // Used to load the 'native-lib' library on application startup.
