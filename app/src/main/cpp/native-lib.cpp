@@ -1,5 +1,6 @@
 #include <jni.h>
 #include <android/log.h>
+#include "./math/LeeMath.h"
 #include <iostream>
 #include <string>
 
@@ -26,6 +27,42 @@ char *Jstring2CStr(JNIEnv *env, jstring jstr) {
 
     env->ReleaseByteArrayElements(barr, ba, 0);  //
     return rtn;
+}
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_example_li_leeutil_jni_FirstJniActivity_callMyMathAdd(JNIEnv *env, jobject instance,
+                                                               jint a, jint b) {
+    return LeeMath::getIns()->add(a, b);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_li_leeutil_jni_FirstJniActivity_cCallJavaStaticFunc(JNIEnv *env,
+                                                                     jobject instance) {
+
+    //通过反射来调用java的方法，需要知道方法签名，使用javap得到方法签名
+    //在bin/classes目录下执行 javap -s 全类名
+    //1、得到类的字节码对象
+    //jclass      (*FindClass)(JNIEnv*, const char*);
+    jclass clazz = env->FindClass("com/example/li/leeutil/jni/FirstJniActivity");
+    if (clazz == 0) {
+        LOGI("find class error");
+        return;
+    }
+    LOGI("find class ");
+
+    //jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+    jmethodID methodID = env->GetStaticMethodID(clazz, "staticShow", "(Ljava/lang/String;)V");
+    if (methodID == 0) {
+        LOGI("find static method error");
+        return;
+    }
+    LOGI("find static method ");
+
+    //void        (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+    env->CallVoidMethod(instance, methodID, env->NewStringUTF("这是C调用static func 传递过来的弹窗内容"));
+
 }
 
 extern "C"

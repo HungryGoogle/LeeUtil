@@ -54,6 +54,12 @@ public class FirstJniActivity extends Activity {
 
                 // Jni C调用Android的static方法，打印的日志在logcat里面
                 cCallJavaStaticFunc();
+
+
+                // Jni 调用C封装的库函数
+                int result = callMyMathAdd(3, 5);
+                Log.i("leeTest------>", "3 + 5, use native math lib result = " + result);
+
             }
         });
     }
@@ -62,10 +68,12 @@ public class FirstJniActivity extends Activity {
      *  这个函数，在{@link FirstJniActivity#cCallJavaFunc}会被反射调用
      */
     public void show(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("标题");
-        builder.setMessage(message);
-        builder.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("标题");
+//        builder.setMessage(message);
+//        builder.show();
+
+        Log.i("leeTest------>", "message = " + message);
     }
 
     /**
@@ -87,6 +95,7 @@ public class FirstJniActivity extends Activity {
     private native void encodeArray(int[] arr);
     public native void cCallJavaFunc();
     public native void cCallJavaStaticFunc();
+    public native int callMyMathAdd(int a, int b);
 
 
     // Used to load the 'native-lib' library on application startup.
