@@ -29,14 +29,13 @@ char *Jstring2CStr(JNIEnv *env, jstring jstr) {
     return rtn;
 }
 
-extern "C"
+extern "C" {
 JNIEXPORT jint JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_callMyMathAdd(JNIEnv *env, jobject instance,
                                                                jint a, jint b) {
     return LeeMath::getIns()->add(a, b);
 }
 
-extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_cCallJavaStaticFunc(JNIEnv *env,
                                                                      jobject instance) {
@@ -65,7 +64,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_cCallJavaStaticFunc(JNIEnv *env
 
 }
 
-extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_cCallJavaFunc(JNIEnv *env, jobject instance) {
 
@@ -92,7 +90,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_cCallJavaFunc(JNIEnv *env, jobj
     env->CallVoidMethod(instance, methodID, env->NewStringUTF("这是C传递过来的弹窗内容"));
 }
 
-extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_cLog(JNIEnv *env, jobject instance) {
 
@@ -100,7 +97,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_cLog(JNIEnv *env, jobject insta
     LOGI("leeTest 我是C语言打印的info日志");
 }
 
-extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_encodeArray(JNIEnv *env, jobject instance,
                                                              jintArray arr_) {
@@ -114,7 +110,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_encodeArray(JNIEnv *env, jobjec
     env->ReleaseIntArrayElements(arr_, arr, 0);
 }
 
-extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_encode(JNIEnv *env, jobject instance, jstring str_,
                                                         jint strLength) {
@@ -134,7 +129,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_encode(JNIEnv *env, jobject ins
 //    return env->NewStringUTF(encode.c_str());
 }
 
-extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_decode(JNIEnv *env, jobject instance, jstring str_,
                                                         jint strLength) {
@@ -149,7 +143,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_decode(JNIEnv *env, jobject ins
     return env->NewStringUTF(cstr);
 }
 
-extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_testInt(JNIEnv *env, jobject instance,
                                                          jint strLength) {
@@ -158,7 +151,6 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_testInt(JNIEnv *env, jobject in
     return env->NewStringUTF(hello.c_str());
 }
 
-extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_li_leeutil_jni_FirstJniActivity_stringFromJNI(
         JNIEnv *env,
@@ -166,4 +158,4 @@ Java_com_example_li_leeutil_jni_FirstJniActivity_stringFromJNI(
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
-
+}
